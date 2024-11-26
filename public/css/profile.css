@@ -1,0 +1,23 @@
+.form-container {
+margin-top: 3vh;
+    animation-duration: 2s;
+    animation-name: form;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in-out;
+    width: 60vw;
+    position: relative;
+    min-height: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 20vh;
+    left: 20vw;
+    padding: 10%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+#darkmode{
+  
+    float: right;
+    margin-right: 3vw;
+    margin-top: 2vw;
+}

@@ -1,0 +1,193 @@
+.navbar{
+    background-color: rgba(255, 255, 255, 0.8);
+   
+}
+[class*="navbar-"] {
+    color: rgb(82, 89, 58);
+    font-weight: bold;
+   
+
+
+}
+
+body {
+    background-image: url("/image/image1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    overflow-x: clip;
+   
+}
+.main-container {
+    position:absolute;
+    left: 60vw;
+    top: 30vh;
+   
+    height: auto;
+}
+.main-image{
+   
+    border-radius:50%;
+   width: 20vw;
+    filter: blur(1px);
+}
+  .main-text {
+      font-size: 5vw;
+      position: relative;
+      top: 30vh;
+      left: 15vw;
+      color: white;
+  }
+
+  .welcome-text {
+      font-size: 2vw;
+      position: relative;
+      top: 18vh;
+      left: 15vw;
+      color: white;
+  }
+
+.nav-item:hover{
+    background-color: rgb(168, 168, 239);
+    border-radius: 10px;
+    border: 0px;
+}
+[class*="nav-"] {
+
+    font-weight: bold;
+    margin: 0px 15px 0px 15px;
+
+
+}
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    height: auto;
+    min-height: 25vw;
+    width: auto;
+    position: relative;
+    box-sizing: border-box;
+    border: 0px;
+    top: 70vh;
+    color: white;
+    background-color: rgb(0, 0, 0);
+
+}
+
+#register-btn {
+    margin-right: 3vw;
+}
+
+#login-btn {
+
+    font-weight: bold;
+
+}
+
+.reglog-link:any-link {
+    text-decoration: none;
+    color: white;
+}
+.main-body{
+    list-style-type: none;
+    display:inline-flex;
+}
+
+
+
+.grid-item1 {
+    background-color: rgb(0, 0, 0);
+    padding-top: 4vh;
+    padding-left: 2vw;
+}
+
+.grid-item2 {
+    background-color: black;
+    padding-top: 4vh;
+}
+
+.grid-item3 {
+    background-color: black;
+    padding-top: 4vh;
+    line-height: 3vw;
+}
+.grid-item3 a:any-link{
+color: white;
+text-decoration: none;
+}
+@media(max-width:600px) {
+    .main-image {
+        width: 100px
+    }
+
+    .main-body {
+
+        display: block;
+    }
+
+    .main-container {
+
+        left: 30vw;
+        top: 70vh;
+        height: auto;
+    }
+
+    .welcome-text {
+        font-size: 3vw;
+        position: relative;
+        top: 18vh;
+        left: 15vw;
+        color: white;
+    }
+
+    .main-text {
+        font-size: 8vw;
+        position: relative;
+        top: 25vh;
+        left: 15vw;
+        color: white;
+        font-weight: bold;
+    }
+
+    #already-acct {
+        font-size: 0.8rem;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        height: auto;
+        min-height: 25vw;
+        width: auto;
+        position: relative;
+        box-sizing: border-box;
+        border: 0px;
+        top: 70vh;
+        color: white;
+        background-color: rgb(0, 0, 0);
+    }
+
+    .grid-item1 {
+        background-color: rgb(0, 0, 0);
+        padding-top: 4vh;
+        padding-left: 2vw;
+    }
+
+    .grid-item2 {
+        background-color: black;
+        padding-top: 4vh;
+        line-height: 8vh;
+    }
+
+    .grid-item3 {
+        background-color: black;
+        padding-top: 4vh;
+        line-height: 8vh;
+
+    }
+
+}
