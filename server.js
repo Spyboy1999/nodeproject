@@ -6,13 +6,14 @@ const sqlSession= require("express-mysql-session")(session)
 app.set("views engine","ejs")
 const nodemailer = require("nodemailer");
 const path = require("path");
+require("dotenv").config()
 const { profile } = require("console");
 app.use("/", express.static(path.join(__dirname, "/public")));
 const connDB = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "firstdb",
+  host:process.env.HOST ,
+  user:process.env.DB_USER,
+  password:process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 connDB.connect((err) => {
   if (err) throw err;
