@@ -13,7 +13,9 @@ const connDB = mysql.createConnection({
   host:process.env.HOST ,
   user:process.env.DB_USER,
   password:process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  database:process.env.DB_NAME,
+  port:process.env.PORT || 3306,
+  connectTimeout: 300000
 });
 connDB.connect((err) => {
   if (err) throw err;
