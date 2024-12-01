@@ -10,18 +10,20 @@ require("dotenv").config()
 const { profile } = require("console");
 app.use("/", express.static(path.join(__dirname, "/public")));
 const connDB = mysql.createConnection({
-  host:process.env.HOST ,
-  user:process.env.DB_USER,
-  password:process.env.DB_PASS,
-  database:process.env.DB_NAME,
-  port:process.env.PORT,
-  connectTimeout: 300000
+
+host:process.env.HOST,
+user:process.env.DB_USER,
+password:process.env.DB_PASS,
+database:process.env.DB_NAME,
+multipleStatements: false
 });
 connDB.connect((err) => {
-  if (err) throw err;
+  if (err){
+    throw err;
+  }
   console.log("connection successful");
 });
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended:true }));
 
 const isAuth=(req,res,next)=>{
   if(req.session.isAuth){
@@ -51,17 +53,38 @@ app.use(session({
   store:storeSession
  
 }))
+app.get("/createDB", (req, res) => {
+   let dbName="customer";
+  let dbexist="SHOW DATABASES LIKE ?";
+  let existQuery=connDB.query(dbexist,[dbName],(err,result)=>{
+    if(err) throw err;
+    if (result.length>0){
+      res.send("database name already exist")
+ }
+ else{
+       let queryData = "CREATE DATABASE firstDB";
+       connDB.query(queryData, (err) => {
+    if (err) throw err;
+    res.write("database created succesfully");
+  } )
+}
+  })
+
+})
+ 
+    
+    
+
+ 
+  
+
 
 app.get("/reset",(req,res)=>{
   res.render(path.join(__dirname,"views","reset.ejs"))
 })
-app.get("/createDB", (req, res) => {
-  let queryData = "CREATE DATABASE firstDB";
-  connDB.query(queryData, (err) => {
-    if (err) throw err;
-    res.write("database created succesfully");
-  });
-});
+app.get("/",(req,res)=>{
+  res.render(path.join(__dirname,"views","index.ejs"))
+})
 app.get("/home/profile",(req,res)=>{
   const sql=`SELECT * FROM customer WHERE Email=?`;
   connDB.query(sql,[req.session.user],(err,result)=>{
@@ -133,7 +156,7 @@ app.post("/register", (req, res) => {
       let store = `INSERT INTO customer SET?`;
       connDB.query(store, data, (err, result) => {
         if (err) throw err;
-        res.send("user created successfully");
+        res.send("user created successfully /n/n");
         res.redirect("/login")
       }); //
     }
@@ -142,13 +165,30 @@ app.post("/register", (req, res) => {
 
 //
 app.get("/customer", (req, res) => {
+  let tableName="customer";
+  let tableExist="SHOW TABLES LIKE ?"
+    existQuery=connDB.query(tableExist,[tableName],(err,result)=>{
+    if(err) throw err;
+    if(result.length>0){
+      res.send("table name already exist")
+    }
+    else{
   let createTable =
     "CREATE TABLE customer (Id INT AUTO_INCREMENT,Email VARCHAR(255),Pass VARCHAR(256),PRIMARY KEY(id))";
   connDB.query(createTable, (err) => {
     if (err) throw err;
     res.send("table created");
-  });
-});
+  })
+}
+
+
+    })
+
+})
+
+    
+  
+ 
 
 app.get("/insert", (req, res) => {
   // const select="SELECT * FROM student"
