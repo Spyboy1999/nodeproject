@@ -14,8 +14,8 @@ const connDB = mysql.createConnection({
 host:process.env.HOST,
 user:process.env.DB_USER,
 password:process.env.DB_PASS,
-database:process.env.DB_NAME,
-multipleStatements: false
+database:process.env.DB_NAME
+
 });
 connDB.connect((err) => {
   if (err){
@@ -156,7 +156,6 @@ app.post("/register", (req, res) => {
       let store = `INSERT INTO customer SET?`;
       connDB.query(store, data, (err, result) => {
         if (err) throw err;
-        res.send("user created successfully /n/n");
         res.redirect("/login")
       }); //
     }

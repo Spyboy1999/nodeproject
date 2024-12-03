@@ -117,8 +117,8 @@
         font-size: 0.8rem;
     }
     .form-container{
-        width: 43vw;
-        left:28vw;
+        width:80vw;
+        left:10vw;
     }
     .grid-container {
             display: grid;
