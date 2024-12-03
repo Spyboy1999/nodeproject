@@ -62,7 +62,8 @@ app.get("/createDB", (req, res) => {
       res.send("database name already exist")
  }
  else{
-       let queryData = "CREATE DATABASE firstDB";
+  let dbName=process.env.DB_NAME
+       let queryData = `CREATE DATABASE ${dbName} `;
        connDB.query(queryData, (err) => {
     if (err) throw err;
     res.write("database created succesfully");
